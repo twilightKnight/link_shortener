@@ -9,29 +9,33 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
-DB_TYPE = 'mysql'
-DB_PATH = 'link_shortener_db'
-DB_USER = 'root'
-DB_PASSWORD = 'root'
-DB_HOST = 'localhost'
-DB_PORT = '3306'
-SHORT_LINK_LEN = 6
-SITE_DOMAIN_NAME = 'http://127.0.0.1:8000/'
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_path = os.path.join(BASE_DIR.parent, '.env')  # .env file excepted in the most top-level file
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
+else:
+    raise EnvironmentError('No Env File Provided')
+
+DB_TYPE = os.environ.get('DB_TYPE')  # ='mysql'
+DB_PATH = os.environ.get('DB_PATH')  # ='dbpath/myDB'
+DB_USER = os.environ.get('DB_USER')  # ='root'
+DB_PASSWORD = os.environ.get('DB_PASSWORD')  # ='root'
+DB_HOST = os.environ.get('DB_HOST')  # ='localhost'
+DB_PORT = os.environ.get('DB_PORT')  # ='3306'
+SHORT_LINK_LEN = os.environ.get('SHORT_LINK_LEN')  # ='6'
+# length of your shortlink e.g. with 4 you generate 4 symbols
+SITE_DOMAIN_NAME = os.environ.get('SITE_DOMAIN_NAME')  # ='http://mysite.com/here_we_land'
+SECRET_KEY = os.environ.get('SECRET_KEY')  # ='django-secret_key'
+
 
 DB_ENGINE = 'django.db.backends.' + DB_TYPE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&$8tu)vx*7@t9aq*sem!bsmwxmbfmu0og*cg#_09c+jwjwgv85'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
