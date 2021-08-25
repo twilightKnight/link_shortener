@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shorten your link here!</title>
+    <style>
+    body{
+        background-color: #06D6A0;
+        }
+    #header{
+        background-color: #ffd166;
+        padding-right: 3.5%;
+        }
+    .nav-link{
+        color: #ef476f;
+        }
+    .dropdown-item{
+        color: #118AB2;
+        }
+    .text-right{
+        margin-top: 6px;
+        color: #073B4C;
+        }
+    #main_form{
+        padding: 5% 15%
+        }
+    .btn{
+        background-color: #118ab2;
+        border-color: #118ab2;
+        }
+    .btn:hover{
+        background-color: #073b4c;
+        border-color: #073b4c;
+        }
+    </style>
+</head>
+<body>
+
+<div id = "header">
+    <div class = "row">
+        <div class="col">
+            <p class="text-right font-weight-bold text-xl"> Shorten your link here. Size DOES matter. </p>
+        </div>
+        <div class="col">
+            <nav class="nav justify-content-end">
+
+                <a class="nav-link" href="{% url 'link_shortener_app:features' %}">Features</a>
+
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">I am a Guest</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'link_shortener_app:sign_in' %}">Sign in</a>
+                            <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'link_shortener_app:sign_up' %}">Sign up</a>
+                    </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" id="main_form">
+   <form name="link_form" action="" method="post">
+
+        <label for="long_link" class="text-right">Put your loooooong link here</label>
+
+        <div class="row">
+            <div class="col-9">
+                {{ long_link_form }}
+
+                {% if Invalid_Link_Error %}
+                    <div class="alert alert-primary" role="alert">
+                        Invalid link!
+                    </div>
+                {% elif DB_Access_Error %}
+                    <div class="alert alert-primary" role="alert">
+                        Internal error. Please retry!
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary btn-block">Shorten your link</button>
+            </div>
+        </div>
+
+
+
+       <br><br>
+       {% if short_link_form %}
+       <label for="short_link" class="text-right">Your shortened link</label>
+
+        <div class="row">
+            <div class="col-11">
+                {{ short_link_form }}
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary" onclick="copy()" id="copy_button">Copy!</button>
+            </div>
+        </div>
+       {% endif %}
+
+   </form>
+</div>
+
+
+</body>
+<script>
+
+window.onload = function() {
+    {% if Short_link_Not_Found_Error %}
+        alert("Short link not found!");
+    {% elif Redirect_Error %}
+        alert("Redirect error!");
+    {% endif %}
+};
+
+function copy() {
+    navigator.clipboard.writeText(document.getElementById("id_short_link").value);
+}
+
+</script>
+
+</html>
