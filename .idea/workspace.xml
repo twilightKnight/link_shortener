@@ -20,32 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/INSTALLER" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/METADATA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/RECORD" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/WHEEL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-21.2.1.dist-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/show.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/commands/show.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/_distutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/_distutils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/_sysconfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/_sysconfig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/locations/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/metadata/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/metadata/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/metadata/pkg_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/metadata/pkg_resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/models/link.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/models/link.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/operations/install/legacy.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/operations/install/legacy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_install.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/req/req_install.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/provider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/tenacity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/tenacity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.9.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.9.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.exe" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/404_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +99,14 @@
       <option name="presentableId" value="Default" />
       <updated>1627282689628</updated>
     </task>
+    <task id="LOCAL-00001" summary="env variables properly done">
+      <created>1629925363405</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1629925363405</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +119,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="env variables properly done" />
+    <option name="LAST_COMMIT_MESSAGE" value="env variables properly done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="509" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629923235773">
@@ -135,37 +134,45 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629913895277" />
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1628781368357">
+    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1631542551207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628781368357" />
-    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1628781368356">
+    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
+    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1631542551207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1628781368356" />
-    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1628781368356">
+    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
+    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1631542551207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1628781368356" />
-    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1628781368356">
+    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
+    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1631542551207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1628781368356" />
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1628781368357">
+    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1631542551208">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1628781368357" />
-    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1628781368357">
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631542551208" />
+    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1631542551207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1628781368357" />
-    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1628781368357">
+    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
+    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1631542551207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1628781368357" />
-    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1628781368357">
+    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
+    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1631542551208">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1628781368357" />
+    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1631542551208" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1629925389403">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1629925389403" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1631462024286">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1631462024286" />
   </component>
 </project>

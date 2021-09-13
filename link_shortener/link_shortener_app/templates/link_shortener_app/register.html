@@ -33,33 +33,35 @@
             </div>
             {% endif %}
 
-            {{ sign_in_form.email }}
+            {{ registration_form.email }}
 
-            {% if Email_Not_Exists %}
+            {% if Invalid_Email %}
             <div class="alert alert-primary" role="alert">
                 Invalid email!
             </div>
+            {% elif Email_Already_Used %}
+            <div class="alert alert-primary" role="alert">
+                This email is already used!
+            </div>
             {% endif %}
 
-            {{ sign_in_form.password }}
+            {{ registration_form.password }}
+            {{ registration_form.password_confirmation }}
 
-            {% if Wrong_Password %}
+            {% if Confirmation_Error %}
             <div class="alert alert-primary" role="alert">
-                Wrong Password!
+                Passwords should be the same!
             </div>
             {% endif %}
 
             <br>
             <div class="row justify-content-between">
                 <div class="col-4">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </div>
                 <div class="col-4">
                     <p>
-                        <a href="#">Forgot password</a>
-                    </p>
-                    <p>
-                        <a href="{% url 'link_shortener_app:register'%}">Create new account</a>
+                        <a href="{% url 'link_shortener_app:sign_in'%}">Already have an account</a>
                     </p>
                 </div>
             </div>

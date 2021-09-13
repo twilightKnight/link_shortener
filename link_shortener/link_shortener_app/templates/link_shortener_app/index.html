@@ -51,12 +51,26 @@
 
                 <a class="nav-link" href="{% url 'link_shortener_app:features' %}">Features</a>
 
+                {% if User_Session %}
+
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ User_Session }}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'link_shortener_app:user_page' %}">User page</a>
+                            <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'link_shortener_app:index'%}?action=logout">Log out</a>
+                    </div>
+
+                {% else %}
+
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">I am a Guest</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'link_shortener_app:sign_in' %}">Sign in</a>
                             <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'link_shortener_app:sign_up' %}">Sign up</a>
+                        <a class="dropdown-item" href="{% url 'link_shortener_app:register' %}">Register</a>
                     </div>
+
+                {% endif %}
+
             </nav>
         </div>
     </div>
@@ -75,7 +89,7 @@
                     <div class="alert alert-primary" role="alert">
                         Invalid link!
                     </div>
-                {% elif DB_Access_Error %}
+                {% elif Email_Already_Used %}
                     <div class="alert alert-primary" role="alert">
                         Internal error. Please retry!
                     </div>
