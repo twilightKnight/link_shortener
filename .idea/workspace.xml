@@ -20,16 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/404_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/verification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_in.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" afterDir="false" />
     </list>
@@ -58,7 +55,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../learningCoolPythonStuff" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -106,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629925363405</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="user creation added">
+      <created>1631547762817</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1631547762817</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,7 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="env variables properly done" />
-    <option name="LAST_COMMIT_MESSAGE" value="env variables properly done" />
+    <MESSAGE value="user creation added" />
+    <option name="LAST_COMMIT_MESSAGE" value="user creation added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="509" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629923235773">
@@ -134,42 +139,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629913895277" />
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1631542551207">
+    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
-    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1631542551207">
+    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
-    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1631542551207">
+    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1631547979848">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
-    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1631542551207">
+    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1631547979848" />
+    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1631542551208">
+    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631542551208" />
-    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1631542551207">
+    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
-    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1631542551207">
+    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1631542551207" />
-    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1631542551208">
+    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1631547979849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1631542551208" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1629925389403">
+    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1631547773073">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1629925389403" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1631547773073" />
     <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1631462024286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

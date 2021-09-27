@@ -124,9 +124,7 @@
 <script>
 
 window.onload = function() {
-    {% if Short_link_Not_Found_Error %}
-        alert("Short link not found!");
-    {% elif Redirect_Error %}
+    {% if Redirect_Error %}
         alert("Redirect error!");
     {% endif %}
 };

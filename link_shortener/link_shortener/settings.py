@@ -32,15 +32,20 @@ SHORT_LINK_LEN = os.environ.get('SHORT_LINK_LEN')  # ='6'
 SITE_DOMAIN_NAME = os.environ.get('SITE_DOMAIN_NAME')  # ='http://mysite.com/here_we_land'
 SECRET_KEY = os.environ.get('SECRET_KEY')  # ='django-secret_key'
 
-
 DB_ENGINE = 'django.db.backends.' + DB_TYPE
+
+OFFICIAL_EMAIL = os.environ.get('OFFICIAL_EMAIL')  # ='companymail@mail.com'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')  # ='smtp.mail.com'
+EMAIL_PORT = os.environ.get('EMAIL_PORT')  # ='587'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # ='mail@mail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # ='my.password'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition

@@ -1,6 +1,7 @@
 from django.db import models
 
 HASH_LEN = 64
+CODE_LEN = 50
 
 
 class LinkReferences(models.Model):
@@ -13,5 +14,11 @@ class LinkReferences(models.Model):
 
 class UserData(models.Model):
     email = models.CharField(max_length=50)
+    verified = models.BooleanField(default=False)
     password = models.CharField(max_length=HASH_LEN)
     salt = models.CharField(max_length=HASH_LEN)
+
+
+class VerificationCodes(models.Model):
+    email = models.CharField(max_length=50)
+    code = models.CharField(max_length=CODE_LEN)

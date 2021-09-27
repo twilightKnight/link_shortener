@@ -20,3 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('link_shortener_app.urls')),
 ]
+handler404 = "link_shortener_app.views.page_404"

@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import NoReverseMatch
+from django.db import transaction
 
 from .models import LinkReferences
 from .forms import LongLinkForm, ShortLinkForm, RegistrationForm, SignInForm
-from .services import create_new_short_link, save_userdata, check_userdata
+from .services import create_new_short_link, save_userdata, check_userdata, send_verification_email, verify_email
 
 
 def index(request):
@@ -59,7 +60,7 @@ def redirect_(request, short_link):
 
 
 def page_404(request, *args, **kwargs):
-    return render(request, '404_page.html')
+    return render(request, 'link_shortener_app/404_page.html', status=404)
 
 
 def features(request):
@@ -76,6 +77,7 @@ def user_page(request):
     return render(request, 'link_shortener_app/user_page.html', context)
 
 
+@transaction.atomic()
 def create_new_user_account(request):
     context = {}
     registration_form = RegistrationForm()
@@ -97,11 +99,26 @@ def create_new_user_account(request):
                     context.update(error)
                 else:
                     request.session['username'] = email
-                    return redirect('link_shortener_app:user_page')
+                    send_verification_email(email)
+                    return redirect('link_shortener_app:verification_page')
         else:
             context.update({"Invalid_Email": "true"})
 
     return render(request, 'link_shortener_app/register.html', context)
+
+
+def verification_page(request):
+    context = {}
+    email = request.session['username']
+    context.update({'Email': email})
+    if request.method == 'GET' and request.GET.get('code') is not None:
+        error = verify_email(request.GET.get('code'))
+        if error:
+            context.update(error)
+        else:
+            return redirect('link_shortener_app:user_page')
+
+    return render(request, 'link_shortener_app/verification.html', context)
 
 
 def sign_in_account(request):
