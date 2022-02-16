@@ -1,0 +1,37 @@
+{% load static %}
+<div class = "row">
+    <div class="col-2">
+        <img width="40" height="40" src="{% static 'home favicon.png' %}" style="margin-left: 10px"
+             onclick="window.location='{% url 'link_shortener_app:index' %}'">
+    </div>
+    <div class="col">
+        <p class="text-right font-weight-bold text-xl"> Shorten your link here. Size DOES matter. </p>
+    </div>
+    <div class="col">
+        <nav class="nav justify-content-end">
+
+            <a class="nav-link" href="{% url 'link_shortener_app:features' %}">Features</a>
+
+            {% if User_Session %}
+
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ User_Session }}</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'link_shortener_app:user_page' %}">User page</a>
+                        <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'link_shortener_app:index'%}?action=logout">Log out</a>
+                </div>
+
+            {% else %}
+
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">I am a Guest</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'link_shortener_app:sign_in' %}">Sign in</a>
+                        <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'link_shortener_app:register' %}">Register</a>
+                </div>
+
+            {% endif %}
+
+        </nav>
+    </div>
+</div>

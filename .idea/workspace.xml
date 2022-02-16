@@ -19,15 +19,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/verification.html" afterDir="false" />
+    <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="email verification added">
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/static/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/include/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/link_shortener.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/link_shortener.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/features.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/features.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/sign_in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/verification.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/verification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +46,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/verification.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1vqHRQ3VBOyjRvT7bwG8im61N1Q" />
   <component name="ProjectViewState">
@@ -55,35 +71,42 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/link_shortener" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\PycharmProjects\link_shortener\link_shortener\link_shortener_app\templates" />
+      <recent name="C:\Users\ASUS\PycharmProjects\link_shortener\link_shortener\link_shortener_app\templates\include" />
+      <recent name="C:\Users\ASUS\PycharmProjects\link_shortener\link_shortener\link_shortener_app\static" />
+      <recent name="C:\Users\ASUS\PycharmProjects\link_shortener\link_shortener\link_shortener_app\templates\link_shortener_app" />
       <recent name="C:\Users\ASUS\PycharmProjects\link_shortener\link_shortener\polls\templates\polls" />
-      <recent name="C:\Users\ASUS\PycharmProjects\link_shortener" />
-      <recent name="C:\Users\ASUS\PycharmProjects\link_shortener\link_shortener" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="runserver" type="Python.DjangoServer" factoryName="Django server">
       <module name="link_shortener" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="link_shortener.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="C:\Users\ASUS\PycharmProjects\link_shortener\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/link_shortener" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
   </component>
@@ -95,6 +118,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627282689628</updated>
+      <workItem from="1645030077798" duration="10976000" />
+      <workItem from="1645041796909" duration="464000" />
     </task>
     <task id="LOCAL-00001" summary="env variables properly done">
       <created>1629925363405</created>
@@ -110,8 +135,18 @@
       <option name="project" value="LOCAL" />
       <updated>1631547762817</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="email verification added">
+      <created>1632751779205</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1632751779205</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -123,61 +158,11 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="env variables properly done" />
     <MESSAGE value="user creation added" />
-    <option name="LAST_COMMIT_MESSAGE" value="user creation added" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="509" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629923235773">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="509" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1629923235773" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1629913895277">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1629913895277" />
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state width="1515" height="261" key="GridCell.Tab.0.center" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state width="1515" height="261" key="GridCell.Tab.0.left" timestamp="1631547979848">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1631547979848" />
-    <state width="1515" height="261" key="GridCell.Tab.0.right" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state width="1515" height="261" key="GridCell.Tab.1.center" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state width="1515" height="261" key="GridCell.Tab.1.left" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state width="1515" height="261" key="GridCell.Tab.1.right" timestamp="1631547979849">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1631547979849" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1631547773073">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1631547773073" />
-    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1631462024286">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1631462024286" />
+    <MESSAGE value="email verification added" />
+    <option name="LAST_COMMIT_MESSAGE" value="email verification added" />
   </component>
 </project>

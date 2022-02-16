@@ -6,7 +6,7 @@ from .models import HASH_LEN
 class LongLinkForm(forms.Form):
     long_link = forms.CharField(label="", initial="", max_length=500, validators=[URLValidator()])
     long_link.widget = forms.TextInput(attrs={'class': "form-control",
-                                              'placeholder': "http://my_long_link_longlonglonglong.com"})
+                                              'placeholder': "https://my_long_link_longlonglonglong.com"})
 
 
 class ShortLinkForm(forms.Form):

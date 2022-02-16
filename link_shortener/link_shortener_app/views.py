@@ -2,12 +2,14 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import NoReverseMatch
 from django.db import transaction
 
-from .models import LinkReferences
+from .models import LinkReferences, UserData
 from .forms import LongLinkForm, ShortLinkForm, RegistrationForm, SignInForm
 from .services import create_new_short_link, save_userdata, check_userdata, send_verification_email, verify_email
 
 
 def index(request):
+    """Create your short link here"""
+
     context = {}
     long_link_form = LongLinkForm()
     context.update({'long_link_form': long_link_form})
@@ -18,6 +20,7 @@ def index(request):
     except KeyError:
         user_session = None
 
+    # short link creation handling
     if request.method == 'POST':
 
         long_link_form = LongLinkForm(request.POST)
@@ -37,6 +40,8 @@ def index(request):
         else:
             context.update({"Invalid_Link_Error": "true"})
         return render(request, 'link_shortener_app/index.html', context)
+
+    # logout request handling
     elif request.method == 'GET':
         if request.GET.get('action') == 'logout' and (user_session is not None):
             del request.session['username']
@@ -46,6 +51,8 @@ def index(request):
 
 
 def redirect_(request, short_link):
+    """Redirect user by provided short link"""
+
     context = {}
     long_link_form = LongLinkForm()
     context.update({'long_link_form': long_link_form})
@@ -60,18 +67,29 @@ def redirect_(request, short_link):
 
 
 def page_404(request, *args, **kwargs):
+    """Custom 404 page"""
+
     return render(request, 'link_shortener_app/404_page.html', status=404)
 
 
 def features(request):
+    """Feature list page"""
+
     context = {}
+    try:
+        user_session = request.session['username']
+        context.update({'User_Session': user_session})
+    except KeyError:
+        pass
     return render(request, 'link_shortener_app/features.html', context)
 
 
 def user_page(request):
+    """Authorised user`s short link management page"""
+
     context = {}
     try:
-        context.update({'User_Name': request.session['username']})
+        context.update({'User_Session': request.session['username']})
     except KeyError:
         return redirect('link_shortener_app:index')
     return render(request, 'link_shortener_app/user_page.html', context)
@@ -79,6 +97,8 @@ def user_page(request):
 
 @transaction.atomic()
 def create_new_user_account(request):
+    """User registration"""
+
     context = {}
     registration_form = RegistrationForm()
     context.update({'registration_form': registration_form})
@@ -98,7 +118,6 @@ def create_new_user_account(request):
                 if error is not None:
                     context.update(error)
                 else:
-                    request.session['username'] = email
                     send_verification_email(email)
                     return redirect('link_shortener_app:verification_page')
         else:
@@ -108,20 +127,25 @@ def create_new_user_account(request):
 
 
 def verification_page(request):
+    """Email verification page"""
+
     context = {}
-    email = request.session['username']
-    context.update({'Email': email})
+
     if request.method == 'GET' and request.GET.get('code') is not None:
-        error = verify_email(request.GET.get('code'))
+        error, email = verify_email(request.GET.get('code'))
         if error:
             context.update(error)
         else:
+            request.session['username'] = email
+            context.update({'Email': email})
             return redirect('link_shortener_app:user_page')
 
     return render(request, 'link_shortener_app/verification.html', context)
 
 
 def sign_in_account(request):
+    """Authorise user and start his browser session"""
+
     context = {}
     sign_in_form = SignInForm()
     context.update({'sign_in_form': sign_in_form})
@@ -138,8 +162,11 @@ def sign_in_account(request):
             if error is not None:
                 context.update(error)
             else:
-                request.session['username'] = email
-                return redirect('link_shortener_app:user_page')
+                if UserData.objects.get(email=email).verified:
+                    request.session['username'] = email
+                    return redirect('link_shortener_app:user_page')
+                else:
+                    return redirect('link_shortener_app:verification_page')
         else:
             context.update({"Invalid_Email": "true"})
     return render(request, 'link_shortener_app/sign_in.html', context)

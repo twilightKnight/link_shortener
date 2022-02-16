@@ -6,19 +6,23 @@ import string
 import random
 
 
-def verify_email(verification_code):
-    error = None
+def verify_email(verification_code: str):
+    """Sets email verification flag to verified based on verification code received"""
+
+    error, email = None, None
     try:
         email = VerificationCodes.objects.get(code=verification_code).email
+        obj = UserData.objects.get(email=email)
+        obj.verified = True
+        obj.save()
     except VerificationCodes.DoesNotExist:
         error = {'Invalid_Verification_Code': 'true'}
-    obj = UserData.objects.get(email=email)
-    obj.verified = True
-    obj.save()
-    return error
+    return error, email
 
 
-def send_verification_email(email):
+def send_verification_email(email: str = 'example@mail.com'):
+    """Creates email verification code, stored in DB, and sends it to provided email"""
+
     code = ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(CODE_LEN)])
     link = settings.SITE_DOMAIN_NAME + 'verification/?code=' + code
     VerificationCodes(email=email, code=code).save()
@@ -34,7 +38,9 @@ def send_verification_email(email):
         )
 
 
-def check_userdata(email, password):
+def check_userdata(email: str, password: str):
+    """Check if entered login+password match stored ones"""
+
     try:
         current_user_data = UserData.objects.get(email=email)
     except UserData.DoesNotExist:
@@ -46,7 +52,9 @@ def check_userdata(email, password):
     return None
 
 
-def save_userdata(email, password):
+def save_userdata(email: str, password: str):
+    """Save login, hashed+salted password"""
+
     error = None
     try:
         UserData.objects.get(email=email)
@@ -65,15 +73,20 @@ def save_userdata(email, password):
     return error
 
 
-def _hash(salt, password):
+def _hash(salt: str, password: str):
+    """Calculate hash of salted password"""
+
     salted_password = password + salt
     hashed_password = hashlib.sha256(salted_password.encode('UTF-8')).hexdigest()
     return hashed_password
 
 
-def create_new_short_link(link):
+def create_new_short_link(link: str = 'https://longlong_link.com'):
+    """Generate short link for provided long link"""
+
     error = None
 
+    # check if short link already exists
     short_link = get_existing_short_link_by_link(link)
     if short_link is not None:
         short_link = settings.SITE_DOMAIN_NAME + short_link
@@ -91,7 +104,9 @@ def create_new_short_link(link):
     return short_link, error
 
 
-def get_existing_short_link_by_link(link):
+def get_existing_short_link_by_link(link: str):
+    """Find existing short link by long link"""
+
     try:
         link_object = LinkReferences.objects.get(link=link)
     except LinkReferences.DoesNotExist:
@@ -101,7 +116,10 @@ def get_existing_short_link_by_link(link):
 
 
 def generate_unique_link():
+    """Generate new unique short link"""
+
     link = ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(int(settings.SHORT_LINK_LEN))])
+    # check if generated short link already exists
     try:
         LinkReferences.objects.get(short_link=link)
     except LinkReferences.DoesNotExist:
