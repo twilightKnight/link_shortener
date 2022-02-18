@@ -31,3 +31,4 @@ class SignInForm(forms.Form):
 
     password = forms.CharField(label="Enter your password", max_length=HASH_LEN)
     password.widget = forms.TextInput(attrs={"class": "form-control", "placeholder": "Password"})
+

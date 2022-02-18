@@ -19,9 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="huge templates refactor + docstrings added + minor bugfix">
+    <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="models updated for feature updating">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +115,9 @@
       <updated>1627282689628</updated>
       <workItem from="1645030077798" duration="10976000" />
       <workItem from="1645041796909" duration="587000" />
-      <workItem from="1645120811293" duration="3515000" />
+      <workItem from="1645120811293" duration="3795000" />
+      <workItem from="1645126231848" duration="381000" />
+      <workItem from="1645199950163" duration="10208000" />
     </task>
     <task id="LOCAL-00001" summary="env variables properly done">
       <created>1629925363405</created>
@@ -137,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645042319986</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="models updated for feature updating">
+      <created>1645124408457</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645124408457</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +176,18 @@
     <MESSAGE value="user creation added" />
     <MESSAGE value="email verification added" />
     <MESSAGE value="huge templates refactor + docstrings added + minor bugfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="huge templates refactor + docstrings added + minor bugfix" />
+    <MESSAGE value="models updated for feature updating" />
+    <option name="LAST_COMMIT_MESSAGE" value="models updated for feature updating" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/link_shortener/link_shortener_app/views.py</url>
+          <line>97</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

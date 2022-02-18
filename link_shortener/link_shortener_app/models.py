@@ -20,15 +20,15 @@ class UserData(models.Model):
 class LinkReferences(models.Model):
     """Short link, referring to long link, and its connected features"""
 
-    user = models.ForeignKey(UserData, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserData, default=None, on_delete=models.CASCADE, blank=True, null=True)
     link = models.SlugField(max_length=500)
     short_link = models.SlugField(max_length=8, default="")
-    creation_date = models.DateField(default=timezone.now())
+    creation_date = models.DateField(default=timezone.now)
     # for clicks counter feature
-    clicks_counter_feature = models.BooleanField(default=False)
-    clicks = models.IntegerField(default=None)
+    clicks_counter_feature = models.BooleanField(default=False)  # updated on user page
+    clicks = models.IntegerField(default=None, null=True)  # updated on user page
     # for ip tracking feature
-    clicker_ip_tracker_feature = models.BooleanField(default=False)
+    clicker_ip_tracker_feature = models.BooleanField(default=False)  # updated on _redirect
 
     def __str__(self):
         return str(self.short_link)
@@ -45,5 +45,5 @@ class ClickerIPs(models.Model):
     """IPs of users, redirected by short link"""
 
     link = models.ForeignKey(LinkReferences, on_delete=models.CASCADE, default=None)
-    ip = models.GenericIPAddressField()
+    ip = models.GenericIPAddressField()  # updated on _redirect
 

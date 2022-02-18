@@ -11,10 +11,10 @@ def verify_email(verification_code: str):
 
     error, email = None, None
     try:
-        email = VerificationCodes.objects.get(code=verification_code).email
-        obj = UserData.objects.get(email=email)
-        obj.verified = True
-        obj.save()
+        user = VerificationCodes.objects.get(code=verification_code).user
+        user.verified = True
+        user.save()
+        email = user.email
     except VerificationCodes.DoesNotExist:
         error = {'Invalid_Verification_Code': 'true'}
     return error, email
@@ -25,7 +25,8 @@ def send_verification_email(email: str = 'example@mail.com'):
 
     code = ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(CODE_LEN)])
     link = settings.SITE_DOMAIN_NAME + 'verification/?code=' + code
-    VerificationCodes(email=email, code=code).save()
+    user = UserData.objects.get(email=email)
+    VerificationCodes(user=user, code=code).save()
     message = 'To verify your email follow the link below. \n' + link
     sent_flag = 0
     while sent_flag != 1:
@@ -81,7 +82,7 @@ def _hash(salt: str, password: str):
     return hashed_password
 
 
-def create_new_short_link(link: str = 'https://longlong_link.com'):
+def create_new_short_link(link: str = 'https://longlong_link.com', email: str = 'example@example.com'):
     """Generate short link for provided long link"""
 
     error = None
@@ -94,7 +95,12 @@ def create_new_short_link(link: str = 'https://longlong_link.com'):
 
     short_link = generate_unique_link()
 
-    LinkReferences(link=link, short_link=short_link).save()
+    if email is not None:
+        user = UserData.objects.get(email=email)
+    else:
+        user = None
+
+    LinkReferences(user=user, link=link, short_link=short_link).save()
     try:
         LinkReferences.objects.get(short_link=short_link)
     except LinkReferences.DoesNotExist:

@@ -1,12 +1,51 @@
 {% extends 'link_shortener_app/base.html' %}
 
 {% block content %}
-Hello
-{{ User_Session }}
-<br>
-Is on development.
-To be more content here!
-<p>
-    <a href="{% url 'link_shortener_app:index'%}?action=logout">Log out</a>
-</p>
+    <div class="row justify-content-md-center">
+        Hello
+        {{ User_Session }}
+        <br>
+    </div>
+    <div class="row justify-content-md-center">
+        <p>
+            <a href="{% url 'link_shortener_app:index'%}?action=logout">Log out</a>
+        </p>
+    </div>
+    <br>
+    <div class="row justify-content-md-center">
+    <table class="table table-striped">
+      <thead>
+         <tr>
+            <th scope="col">#</th>
+            <th scope="col">Long link</th>
+            <th scope="col">Short link</th>
+            <th scope="col">Count clicks</th>
+            <th scope="col">Track IPs</th>
+         </tr>
+      </thead>
+        {% for link in Links %}
+      <tbody>
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td class="col-4">
+              <span class="d-inline-block text-truncate" style="max-width: 300px;">
+                  {{ link.link }}
+              </span>
+          </td>
+          <td class="col-4">{{ link.short_link }}</td>
+          <td class="col-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="flexCheckDefault">
+            </div>
+          </td>
+          <td class="col-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+        {% endfor %}
+    </table>
+    </div>
 {% endblock content %}

@@ -26,7 +26,7 @@ def index(request):
         long_link_form = LongLinkForm(request.POST)
         if long_link_form.is_valid():
 
-            short_link, error = create_new_short_link(long_link_form.data['long_link'])
+            short_link, error = create_new_short_link(long_link_form.data['long_link'], user_session)
             if error is not None:
                 context.update(error)
                 return render(request, 'link_shortener_app/index.html', context)
@@ -92,6 +92,10 @@ def user_page(request):
         context.update({'User_Session': request.session['username']})
     except KeyError:
         return redirect('link_shortener_app:index')
+
+    user = UserData.objects.get(email=request.session['username'])
+    links = LinkReferences.objects.filter(user=user)
+    context.update({'Links': links})
     return render(request, 'link_shortener_app/user_page.html', context)
 
 
