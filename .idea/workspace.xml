@@ -19,16 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="models updated for feature updating">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example.env" afterDir="false" />
+    <list default="true" id="fb72b674-469d-43e9-b7af-04aad783fd8a" name="Default Changelist" comment="user_page updated with feature management interface">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/templates/link_shortener_app/user_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/link_shortener/link_shortener_app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +114,8 @@
       <workItem from="1645041796909" duration="587000" />
       <workItem from="1645120811293" duration="3795000" />
       <workItem from="1645126231848" duration="381000" />
-      <workItem from="1645199950163" duration="10208000" />
+      <workItem from="1645199950163" duration="11088000" />
+      <workItem from="1645303002907" duration="7580000" />
     </task>
     <task id="LOCAL-00001" summary="env variables properly done">
       <created>1629925363405</created>
@@ -154,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645124408457</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="user_page updated with feature management interface">
+      <created>1645216630096</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645216630096</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,15 +182,16 @@
     <MESSAGE value="email verification added" />
     <MESSAGE value="huge templates refactor + docstrings added + minor bugfix" />
     <MESSAGE value="models updated for feature updating" />
-    <option name="LAST_COMMIT_MESSAGE" value="models updated for feature updating" />
+    <MESSAGE value="user_page updated with feature management interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="user_page updated with feature management interface" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/link_shortener/link_shortener_app/views.py</url>
-          <line>97</line>
-          <option name="timeStamp" value="10" />
+          <line>56</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

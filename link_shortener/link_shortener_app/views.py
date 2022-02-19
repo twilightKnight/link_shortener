@@ -2,9 +2,10 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import NoReverseMatch
 from django.db import transaction
 
-from .models import LinkReferences, UserData
+from .models import LinkReferences, UserData, ClickerIPs
 from .forms import LongLinkForm, ShortLinkForm, RegistrationForm, SignInForm
-from .services import create_new_short_link, save_userdata, check_userdata, send_verification_email, verify_email
+from .services import create_new_short_link, save_userdata, check_userdata, send_verification_email, verify_email,\
+    get_client_ip
 
 
 def index(request):
@@ -57,10 +58,23 @@ def redirect_(request, short_link):
     long_link_form = LongLinkForm()
     context.update({'long_link_form': long_link_form})
 
-    long_link = get_object_or_404(LinkReferences, short_link=short_link)
+    link = get_object_or_404(LinkReferences, short_link=short_link)
 
+    # count clicks if feature is enabled
+    if link.clicks_counter_feature:
+        if link.clicks is None:
+            link.clicks = 1
+        else:
+            link.clicks = link.clicks + 1
+        link.save()
+
+    # track IPs if feature is enabled
+    if link.clicker_ip_tracker_feature:
+        ClickerIPs(link=link, ip=get_client_ip(request)).save()
+
+    # redirect itself
     try:
-        return redirect(long_link.link)
+        return redirect(link.link)
     except NoReverseMatch:
         context.update({"Redirect_Error": "true"})
         return render(request, 'link_shortener_app/index.html', context)
@@ -145,6 +159,26 @@ def verification_page(request):
             return redirect('link_shortener_app:user_page')
 
     return render(request, 'link_shortener_app/verification.html', context)
+
+
+def change_link_checkbox_state(request, short_link: str, clicks_mode: str = 'True'):
+    """Changes count clicks and track IPs flags to opposite in LinkReferences object"""
+
+    # check if user has right to edit link`s state
+    requester = request.session['username']
+    link = LinkReferences.objects.get(short_link=short_link)
+    link_owner = link.user.email
+    if requester == link_owner:
+        # change clicks flag
+        if clicks_mode == 'True':
+            link.clicks_counter_feature = not link.clicks_counter_feature
+            link.save()
+        # change IP flag
+        else:
+            link.clicker_ip_tracker_feature = not link.clicker_ip_tracker_feature
+            link.save()
+
+    return redirect('link_shortener_app:user_page')
 
 
 def sign_in_account(request):

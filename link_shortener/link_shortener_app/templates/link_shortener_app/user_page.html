@@ -19,29 +19,43 @@
             <th scope="col">#</th>
             <th scope="col">Long link</th>
             <th scope="col">Short link</th>
+            <th scope="col">Total clicks</th>
             <th scope="col">Count clicks</th>
             <th scope="col">Track IPs</th>
+            <th scope="col">Get tracked IPs</th>
          </tr>
       </thead>
         {% for link in Links %}
       <tbody>
         <tr>
           <th scope="row">{{ forloop.counter }}</th>
-          <td class="col-4">
-              <span class="d-inline-block text-truncate" style="max-width: 300px;">
-                  {{ link.link }}
+          <td class="col-2">
+              <span>
+                  {{ link.link|truncatechars_html:20 }}
               </span>
           </td>
-          <td class="col-4">{{ link.short_link }}</td>
+          <td class="col-2">{{ link.short_link }}</td>
+          <td class="col-2">{{ link.clicks }}</td>
           <td class="col-2">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="True" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault"
+                       {% if link.clicks_counter_feature %}
+                       checked
+                       {% endif %}
+                       onclick=location.href="{% url 'link_shortener_app:change_state' short_link=link.short_link clicks_mode=True %}">
             </div>
           </td>
           <td class="col-2">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                    {% if link.clicker_ip_tracker_feature %}
+                    checked
+                    {% endif %}
+                    onclick=location.href="{% url 'link_shortener_app:change_state' short_link=link.short_link clicks_mode=False %}">
             </div>
+          </td>
+          <td class="col-3">
+              <button type="button" class="btn btn-dark">Send</button>
           </td>
         </tr>
       </tbody>
