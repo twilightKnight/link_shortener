@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import NoReverseMatch
 from django.db import transaction
+from django.views import View
+from django.views.generic import FormView
 
 from .models import LinkReferences, UserData, ClickerIPs
 from .forms import LongLinkForm, ShortLinkForm, RegistrationForm, SignInForm
@@ -8,76 +10,192 @@ from .services import create_new_short_link, save_userdata, check_userdata, send
     get_client_ip
 
 
-def index(request):
+class Index(View):
     """Create your short link here"""
 
-    context = {}
-    long_link_form = LongLinkForm()
-    context.update({'long_link_form': long_link_form})
+    context = {'long_link_form': LongLinkForm()}
 
-    try:
-        user_session = request.session['username']
-        context.update({'User_Session': user_session})
-    except KeyError:
-        user_session = None
+    def post(self, request):
+        user_session = self.get_user_session(request)
 
-    # short link creation handling
-    if request.method == 'POST':
-
+        # short link creation
         long_link_form = LongLinkForm(request.POST)
         if long_link_form.is_valid():
 
             short_link, error = create_new_short_link(long_link_form.data['long_link'], user_session)
             if error is not None:
-                context.update(error)
-                return render(request, 'link_shortener_app/index.html', context)
+                self.context.update(error)
+                return render(request, 'link_shortener_app/index.html', self.context)
 
             long_link = long_link_form.data['long_link']
 
             long_link_form = LongLinkForm(initial={'long_link': long_link})
-            context.update({'long_link_form': long_link_form})
+            self.context.update({'long_link_form': long_link_form})
             short_link_form = ShortLinkForm(initial={'short_link': short_link})
-            context.update({'short_link_form': short_link_form})
+            self.context.update({'short_link_form': short_link_form})
         else:
-            context.update({"Invalid_Link_Error": "true"})
-        return render(request, 'link_shortener_app/index.html', context)
+            self.context.update({"Invalid_Link_Error": "true"})
+        return render(request, 'link_shortener_app/index.html', self.context)
 
-    # logout request handling
-    elif request.method == 'GET':
+    # logout handling
+    def get(self, request):
+        user_session = self.get_user_session(request)
         if request.GET.get('action') == 'logout' and (user_session is not None):
             del request.session['username']
             return redirect('link_shortener_app:index')
 
-    return render(request, 'link_shortener_app/index.html', context)
+        return render(request, 'link_shortener_app/index.html', self.context)
+
+    def get_user_session(self, request):
+        try:
+            user_session = request.session['username']
+            self.context.update({'User_Session': user_session})
+            return user_session
+        except KeyError:
+            return None
 
 
-def redirect_(request, short_link):
+class Redirect(View):
     """Redirect user by provided short link"""
 
+    context = {'long_link_form': LongLinkForm()}
+
+    def get(self, request, short_link):
+        link = get_object_or_404(LinkReferences, short_link=short_link)
+
+        # count clicks if feature is enabled
+        if link.clicks_counter_feature:
+            if link.clicks is None:
+                link.clicks = 1
+            else:
+                link.clicks = link.clicks + 1
+            link.save()
+
+        # track IPs if feature is enabled
+        if link.clicker_ip_tracker_feature:
+            ClickerIPs(link=link, ip=get_client_ip(request)).save()
+
+        # redirect itself
+        try:
+            return redirect(link.link)
+        except NoReverseMatch:
+            self.context.update({"Redirect_Error": "true"})
+            return render(request, 'link_shortener_app/index.html', self.context)
+
+
+class UserPage(View):
+    """Authorised user`s short link management page"""
+
     context = {}
-    long_link_form = LongLinkForm()
-    context.update({'long_link_form': long_link_form})
 
-    link = get_object_or_404(LinkReferences, short_link=short_link)
+    def get(self, request):
+        try:
+            self.context.update({'User_Session': request.session['username']})
+        except KeyError:
+            return redirect('link_shortener_app:index')
 
-    # count clicks if feature is enabled
-    if link.clicks_counter_feature:
-        if link.clicks is None:
-            link.clicks = 1
+        user = UserData.objects.get(email=request.session['username'])
+        links = LinkReferences.objects.filter(user=user)
+        self.context.update({'Links': links})
+        return render(request, 'link_shortener_app/user_page.html', self.context)
+
+
+class CreateUser(View):
+    """User registration"""
+
+    context = {'registration_form': RegistrationForm()}
+
+    def get(self, request):
+        return render(request, 'link_shortener_app/register.html', self.context)
+
+    @transaction.atomic()
+    def post(self, request):
+
+        registration_form = RegistrationForm(request.POST)
+        if registration_form.is_valid():
+
+            email = registration_form.data['email']
+            password = registration_form.data['password']
+
+            if password != registration_form.data['password_confirmation']:
+                self.context.update({"Confirmation_Error": "true"})
+            else:
+                error = save_userdata(email, password)
+                if error is not None:
+                    self.context.update(error)
+                else:
+                    send_verification_email(email)
+                    return redirect('link_shortener_app:verification_page')
         else:
-            link.clicks = link.clicks + 1
-        link.save()
+            self.context.update({"Invalid_Email": "true"})
+        return render(request, 'link_shortener_app/register.html', self.context)
 
-    # track IPs if feature is enabled
-    if link.clicker_ip_tracker_feature:
-        ClickerIPs(link=link, ip=get_client_ip(request)).save()
 
-    # redirect itself
-    try:
-        return redirect(link.link)
-    except NoReverseMatch:
-        context.update({"Redirect_Error": "true"})
-        return render(request, 'link_shortener_app/index.html', context)
+class EmailVerifier(View):
+    """Email verification page"""
+
+    context = {}
+
+    def get(self, request):
+        if request.GET.get('code') is not None:
+            error, email = verify_email(request.GET.get('code'))
+            if error:
+                self.context.update(error)
+            else:
+                request.session['username'] = email
+                self.context.update({'Email': email})
+                return redirect('link_shortener_app:user_page')
+
+        return render(request, 'link_shortener_app/verification.html', self.context)
+
+
+class LinkUpdate(View):
+    """Edit LinkReference object settings e.g. count clicks and track IPs flags"""
+
+    def get(self, request, short_link: str, clicks_mode: str = 'True'):
+        requester = request.session['username']
+        link = LinkReferences.objects.get(short_link=short_link)
+        link_owner = link.user.email
+        if requester == link_owner:
+            # change clicks flag
+            if clicks_mode == 'True':
+                link.clicks_counter_feature = not link.clicks_counter_feature
+                link.save()
+            # change IP flag
+            else:
+                link.clicker_ip_tracker_feature = not link.clicker_ip_tracker_feature
+                link.save()
+
+        return redirect('link_shortener_app:user_page')
+
+
+class SignInAccount(View):
+    """Authorise user and start his browser session"""
+
+    context = {'sign_in_form': SignInForm()}
+
+    def get(self, request):
+        return render(request, 'link_shortener_app/sign_in.html', self.context)
+
+    def post(self, request):
+        sign_in_form = SignInForm(request.POST)
+        if sign_in_form.is_valid():
+
+            email = sign_in_form.data['email']
+            password = sign_in_form.data['password']
+
+            error = check_userdata(email, password)
+            if error is not None:
+                self.context.update(error)
+            else:
+                if UserData.objects.get(email=email).verified:
+                    request.session['username'] = email
+                    return redirect('link_shortener_app:user_page')
+                else:
+                    return redirect('link_shortener_app:verification_page')
+        else:
+            self.context.update({"Invalid_Email": "true"})
+            return render(request, 'link_shortener_app/sign_in.html', self.context)
 
 
 def page_404(request, *args, **kwargs):
@@ -96,115 +214,3 @@ def features(request):
     except KeyError:
         pass
     return render(request, 'link_shortener_app/features.html', context)
-
-
-def user_page(request):
-    """Authorised user`s short link management page"""
-
-    context = {}
-    try:
-        context.update({'User_Session': request.session['username']})
-    except KeyError:
-        return redirect('link_shortener_app:index')
-
-    user = UserData.objects.get(email=request.session['username'])
-    links = LinkReferences.objects.filter(user=user)
-    context.update({'Links': links})
-    return render(request, 'link_shortener_app/user_page.html', context)
-
-
-@transaction.atomic()
-def create_new_user_account(request):
-    """User registration"""
-
-    context = {}
-    registration_form = RegistrationForm()
-    context.update({'registration_form': registration_form})
-
-    if request.method == 'POST':
-
-        registration_form = RegistrationForm(request.POST)
-        if registration_form.is_valid():
-
-            email = registration_form.data['email']
-            password = registration_form.data['password']
-
-            if password != registration_form.data['password_confirmation']:
-                context.update({"Confirmation_Error": "true"})
-            else:
-                error = save_userdata(email, password)
-                if error is not None:
-                    context.update(error)
-                else:
-                    send_verification_email(email)
-                    return redirect('link_shortener_app:verification_page')
-        else:
-            context.update({"Invalid_Email": "true"})
-
-    return render(request, 'link_shortener_app/register.html', context)
-
-
-def verification_page(request):
-    """Email verification page"""
-
-    context = {}
-
-    if request.method == 'GET' and request.GET.get('code') is not None:
-        error, email = verify_email(request.GET.get('code'))
-        if error:
-            context.update(error)
-        else:
-            request.session['username'] = email
-            context.update({'Email': email})
-            return redirect('link_shortener_app:user_page')
-
-    return render(request, 'link_shortener_app/verification.html', context)
-
-
-def change_link_checkbox_state(request, short_link: str, clicks_mode: str = 'True'):
-    """Changes count clicks and track IPs flags to opposite in LinkReferences object"""
-
-    # check if user has right to edit link`s state
-    requester = request.session['username']
-    link = LinkReferences.objects.get(short_link=short_link)
-    link_owner = link.user.email
-    if requester == link_owner:
-        # change clicks flag
-        if clicks_mode == 'True':
-            link.clicks_counter_feature = not link.clicks_counter_feature
-            link.save()
-        # change IP flag
-        else:
-            link.clicker_ip_tracker_feature = not link.clicker_ip_tracker_feature
-            link.save()
-
-    return redirect('link_shortener_app:user_page')
-
-
-def sign_in_account(request):
-    """Authorise user and start his browser session"""
-
-    context = {}
-    sign_in_form = SignInForm()
-    context.update({'sign_in_form': sign_in_form})
-
-    if request.method == 'POST':
-
-        sign_in_form = SignInForm(request.POST)
-        if sign_in_form.is_valid():
-
-            email = sign_in_form.data['email']
-            password = sign_in_form.data['password']
-
-            error = check_userdata(email, password)
-            if error is not None:
-                context.update(error)
-            else:
-                if UserData.objects.get(email=email).verified:
-                    request.session['username'] = email
-                    return redirect('link_shortener_app:user_page')
-                else:
-                    return redirect('link_shortener_app:verification_page')
-        else:
-            context.update({"Invalid_Email": "true"})
-    return render(request, 'link_shortener_app/sign_in.html', context)

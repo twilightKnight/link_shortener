@@ -42,7 +42,7 @@
                        {% if link.clicks_counter_feature %}
                        checked
                        {% endif %}
-                       onclick=location.href="{% url 'link_shortener_app:change_state' short_link=link.short_link clicks_mode=True %}">
+                       onclick=location.href="{% url 'link_shortener_app:link_update' short_link=link.short_link clicks_mode=True %}">
             </div>
           </td>
           <td class="col-2">
@@ -51,7 +51,7 @@
                     {% if link.clicker_ip_tracker_feature %}
                     checked
                     {% endif %}
-                    onclick=location.href="{% url 'link_shortener_app:change_state' short_link=link.short_link clicks_mode=False %}">
+                    onclick=location.href="{% url 'link_shortener_app:link_update' short_link=link.short_link clicks_mode=False %}">
             </div>
           </td>
           <td class="col-3">
