@@ -2,7 +2,6 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import NoReverseMatch
 from django.db import transaction
 from django.views import View
-from django.views.generic import FormView
 
 from .models import LinkReferences, UserData, ClickerIPs
 from .forms import LongLinkForm, ShortLinkForm, RegistrationForm, SignInForm
