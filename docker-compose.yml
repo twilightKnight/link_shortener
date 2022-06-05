@@ -15,7 +15,8 @@ services:
       test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
   web:
     build: .
-    command: python link_shortener//manage.py runserver 0.0.0.0:8000
+    command: bash -c "python link_shortener//manage.py migrate
+             && python link_shortener//manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     volumes:
@@ -27,6 +28,13 @@ services:
       - db
     env_file:
       - .env
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
 
 volumes:
     mysql-volume:
