@@ -124,7 +124,7 @@ class CreateUser(View):
                     self.context.update(error)
                 else:
                     send_verification_email(email)
-                    return redirect('link_shortener_app:verification_page')
+                    return redirect('link_shortener_app:email_verifier')
         else:
             self.context.update({"Invalid_Email": "true"})
         return render(request, 'link_shortener_app/register.html', self.context)
@@ -191,7 +191,7 @@ class SignInAccount(View):
                     request.session['username'] = email
                     return redirect('link_shortener_app:user_page')
                 else:
-                    return redirect('link_shortener_app:verification_page')
+                    return redirect('link_shortener_app:email_verifier')
         else:
             self.context.update({"Invalid_Email": "true"})
             return render(request, 'link_shortener_app/sign_in.html', self.context)
